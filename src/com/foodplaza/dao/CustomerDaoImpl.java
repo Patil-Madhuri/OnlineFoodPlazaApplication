@@ -22,7 +22,7 @@ public class CustomerDaoImpl implements CustomerDao
 	{
 		con = DButility.getconnection();
 		try {
-			ps = con.prepareStatement("insert into customer_20479(custname,custadd,custphone,custemailid,custpassword)values(?,?,?,?,?)");
+			ps = con.prepareStatement("insert into customer_20479(custname,custadd,custphone, custemailid, custpassword) values (?,?,?,?,?)");
 			ps.setString(1,c.getCustname() );
 			ps.setString(2, c.getAddress());
 			ps.setLong(3, c.getCustphone());
@@ -154,7 +154,30 @@ public class CustomerDaoImpl implements CustomerDao
 		
 		return c;
 	}
-
+	@Override
+	public Customer getByEmail(String email) 
+	{
+		con = DButility.getconnection();
+		try {
+			ps = con.prepareStatement("select * from customer_20479 where custemailid= ?");
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				c.setCustid(rs.getInt("custid"));
+				c.setCustname(rs.getString("custname"));
+				c.setAddress(rs.getString("custadd"));
+				c.setCustphone(rs.getLong("custphone"));
+				c.setCustemail(rs.getString( "custemailid" ));
+				c.setPassword(rs.getString("custpassword"));
+			}
+			return c;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return c;
+	}
 	@Override
 	public boolean changePassword(String un, String oldpwd, String newpwd) 
 	{
@@ -181,5 +204,7 @@ public class CustomerDaoImpl implements CustomerDao
 		}
 		return false;
 	}
+
+	
 
 }

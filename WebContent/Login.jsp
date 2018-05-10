@@ -31,9 +31,18 @@ function validate()
 </script> -->
 </head>
 <body>
+<div id="templatemo_container">
+	<jsp:include page="Header.jsp"></jsp:include>
+<%String msg =(String)request.getAttribute("msg");
+ if(msg != null)
+ {
+	 out.println(msg);
+ }
+%>
 <div align="center">
 <form action="LoginServlet" method="post">
-<input type="hidden" name="action" value="admin">
+<input type="hidden" name="action" value="login">
+
 <table border="1" cellpadding="5x" cellspacing="5x">
 <caption> Login Form</caption>
 <tr >
@@ -73,6 +82,8 @@ function validate()
 </tr>
 </table>
 </form>
+<jsp:include page="Footer.jsp"></jsp:include>
+</div>
 </div>
 </body>
 </html>

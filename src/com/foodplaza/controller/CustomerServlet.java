@@ -1,3 +1,4 @@
+
 package com.foodplaza.controller;
 
 import java.io.IOException;
@@ -41,7 +42,7 @@ public class CustomerServlet extends HttpServlet
 			flag = cdao.deleteCustomer(id);
 			if(flag)
 			{
-				response.sendRedirect("Success.html");
+				response.sendRedirect("index.jsp");
 			}
 			else
 			{
@@ -54,6 +55,14 @@ public class CustomerServlet extends HttpServlet
 			c = cdao.getById(id);
 			//session = request.getSession();
 			session.setAttribute("Customer", c);
+			response.sendRedirect("UpdateCust.jsp");
+		}
+		else if(action != null && action.equals("editprofile"))
+		{
+			String cuname = (String)session.getAttribute("cusername");
+			c = cdao.getByEmail(cuname);
+			session.setAttribute("Customer", c);
+			System.out.println(c);
 			response.sendRedirect("UpdateCust.jsp");
 		}
 		else
@@ -87,7 +96,7 @@ public class CustomerServlet extends HttpServlet
 			flag = cdao.updateCustomer(c);
 			if(flag)
 			{
-				response.sendRedirect("Success.html");
+				response.sendRedirect("index.jsp");
 			}
 			else
 			{
@@ -112,7 +121,7 @@ public class CustomerServlet extends HttpServlet
 		flag = cdao.addCustomer(c);
 		if(flag)
 		{
-			response.sendRedirect("Success.html");
+			response.sendRedirect("index.jsp");
 		}
 		else
 		{

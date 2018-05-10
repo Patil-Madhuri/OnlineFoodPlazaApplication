@@ -8,13 +8,15 @@
 <title>Update Food</title>
 </head>
 <body>
+<div id="templatemo_container">
+	<jsp:include page="Header.jsp"></jsp:include>
 <% Food f =(Food)session.getAttribute("Food"); %>
 <form action="FoodServlet" method="post">
 <input type="hidden" name="action" value="updatefood">
 <table align="center" border="1" cellpadding="5x" cellspacing="5x">
 <tr>
 <td> Id</td>
-<td><input type="text" name="fid" value="<%=f.getFood_id()%>" readonly="readonly"></td>
+<td><input type="text" name="fid" value="<%=f.getFood_id()%>"readonly="readonly"></td>
 </tr>
 
 <tr>
@@ -47,5 +49,6 @@
 </tr>
 </table>
 </form>
+<jsp:include page="Footer.jsp"></jsp:include></div>
 </body>
 </html>

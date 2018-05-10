@@ -63,6 +63,42 @@ public class OrderDaoImpl implements  OrderDao
 		}
 		return false;
 	}
+	@Override
+	public boolean placeorder(String email, double totalbill) 
+	{
+		con = DButility.getconnection();
+		try {
+			ps = con.prepareStatement("insert into order_20479 (custemailid,totalbill,status,date) values(?,?,?,sysdate())");
+			ps.setString(1, email);
+			ps.setDouble(2, totalbill);
+			ps.setString(3, "processing");
+			int x = ps.executeUpdate();
+			if(x > 0)
+			{
+				ps = con.prepareStatement("delete from cart_20479 where custemailid=?");
+				ps.setString(1, email);
+				int y = ps.executeUpdate();
+				if(y > 0)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+				
+			}
+			else
+			{
+				return false;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 
 	@Override
 	public boolean deleteorder(int id) 
@@ -114,5 +150,7 @@ public class OrderDaoImpl implements  OrderDao
 		}
 		return list;
 	}
+
+	
 
 }

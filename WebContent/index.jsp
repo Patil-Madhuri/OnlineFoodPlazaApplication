@@ -1,35 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Tea and Meal - Free CSS Template</title>
+<title>Food Plaza</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+
 <!--  Free CSS Template by TemplateMo.com  --> 
 <div id="templatemo_container">
 	<jsp:include page="Header.jsp"></jsp:include>
-    
+    <%String msg =(String)request.getAttribute("msg");
+ if(msg != null)
+ {
+	 out.println(msg);
+ }
+%>
     <div id="templatemo_top_dishes">
+
     	<h1>Recommended Dishes</h1>
         <div class="top_dishes_box">
-       	  <img src="images/templatemo_image_01.jpg" alt="image" width="205" height="150"/>
-          <h2>Cura bitur turpis</h2>
-            <p>Nulla a risus. Ali quam lectus dui, euismod id, volutpat ac, fringilla eu, ipsum. <a href="#">Read more...</a></p>
+       	  <img src="images/vadapav.jpeg" alt="image" width="205" height="150"/>
+          <h2>vadapav</h2>
+            <p>Vadapav is a vegetarian fast food dish native to the Indian state of Maharashtra. The dish consists of a deep fried potato dumpling placed inside a bread bun (pav) sliced almost in half through the middle. <a href="#">Read more...</a></p>
       </div>
         
         <div class="top_dishes_box">
-       	  <img src="images/templatemo_image_02.jpg" alt="image" />
-            <h2>Suspen metus lorem</h2>
-          <p>Volutpat non, molestie sit amet, placerat id, elit. Praesent laoreet. Mauris velit. <a href="#">Read more...</a></p>
+       	  <img src="images/pavbhaji.jpeg" alt="image" width="205" height="150"/>
+            <h2>Pav Bhaji</h2>
+          <p>Pav bhaji  is a fast food dish from Maharashtra, India, consisting of a thick vegetable curry, fried and served with a soft bread roll <a href="#">Read more...</a></p>
         </div>
         
         <div class="top_dishes_box">
-       	  <img src="images/templatemo_image_03.jpg" alt="image" />
-            <h2>Phasellus dui velit</h2>
-          <p>Laoreet id, accumsan nec, dui. Etiam varius. Maecenas sit amet est et enim laoreet rutrum. <a href="#">Read more...</a></p>
+       	  <img src="images/dalkhichadi.jpeg" alt="image" width="205" height="150"/>
+            <h2>dal khichadi</h2>
+          <p>An elaborate yet easy khichdi that makes a wholesome and delicious meal <a href="#">Read more...</a></p>
       </div>
         
         <div class="top_dishes_box">
@@ -75,6 +84,7 @@
     </div>
 
 <jsp:include page="Footer.jsp"></jsp:include>
+
 <!--  Free CSS Templates by TemplateMo.com  --> 
 </div><!-- end of container -->
 <!-- templatemo 082 tea and meal -->

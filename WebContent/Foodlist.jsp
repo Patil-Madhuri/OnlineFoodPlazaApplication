@@ -8,6 +8,10 @@
 <title> Food List</title>
 </head>
 <body>
+<% String auname = (String)session.getAttribute("ausername");
+	String cuname =(String) session.getAttribute("cusername");%>
+<div id="templatemo_container">
+	<jsp:include page="Header.jsp"></jsp:include>
 <table align="center" border="1" cellpadding="5x" cellspacing="5x">
 <caption>Food List</caption>
 <tr>
@@ -15,26 +19,33 @@
 <th> Food Name </th>
 <th> Food Price </th>
 <th> Food Category </th>
-<th  colspan="2"> Operation</th>
+<%if(cuname != null || auname != null){ %>
+<th  colspan="3"> Operation</th>
+<% } %>
 </tr>
-
 <% List<Food> flist = (List<Food>)session.getAttribute("FoodList"); 
  for(int i=0;i<flist.size();i++) 
 	{
 		Food f = new Food();
 		f = flist.get(i); %>
 		<tr>
-		<th><%= f.getFood_id() %></th>
-		<th><%= f.getFood_name() %></th>
-		<th><%= f.getFood_price() %></th>
-		<th><%= f.getFood_category()%></th>
+		<td><%= f.getFood_id() %></td>
+		<td><%= f.getFood_name() %></td>
+		<td><%= f.getFood_price() %></td>
+		<td><%= f.getFood_category()%></td>
+		<%if(auname != null) { %>
 		<th><a href ="FoodServlet?action=delete&foodid=<%=f.getFood_id()%>">Delete</a>
-			<a href = "FoodServlet?action=update&foodid=<%=f.getFood_id()%>">Update</a>
+		<th><a href = "FoodServlet?action=update&foodid=<%=f.getFood_id()%>">Update</a></th>
+		<% } %>
+		<% if(cuname != null){ %>
+		<th><a href = "CartServlet?action=addtocart&foodid=<%=f.getFood_id()%>">Add to Cart</a>
 		</th>
+		<% } %>
 		
 		</tr>
 		<% } %>
 
 </table>
+<jsp:include page="Footer.jsp"></jsp:include></div>
 </body>
 </html>

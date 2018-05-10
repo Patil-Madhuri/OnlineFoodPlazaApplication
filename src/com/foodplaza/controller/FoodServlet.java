@@ -47,7 +47,7 @@ public class FoodServlet extends HttpServlet
 			//System.out.println(flag);
 			if(flag)
 			{
-				response.sendRedirect("Success.html");
+				response.sendRedirect("index.jsp");
 			}
 			else
 			{
@@ -91,7 +91,7 @@ public class FoodServlet extends HttpServlet
 			flag = fdao.updateFood(f);
 			if(flag)
 			{
-				response.sendRedirect("Success.html");
+				response.sendRedirect("index.jsp");
 			}
 			else
 			{
@@ -110,7 +110,7 @@ public class FoodServlet extends HttpServlet
 		flag = fdao.addFood(f);
 		if(flag)
 		{
-			response.sendRedirect("Success.html");
+			response.sendRedirect("index.jsp");
 		}
 		else
 		{

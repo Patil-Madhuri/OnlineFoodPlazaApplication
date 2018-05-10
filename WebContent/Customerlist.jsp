@@ -10,6 +10,8 @@
 <title>Customer List</title>
 </head>
 <body>
+<div id="templatemo_container">
+	<jsp:include page="Header.jsp"></jsp:include>
 <table align="center" border="1" cellpadding="5x" cellspacing="5x">
 <caption>Customer List</caption>
 
@@ -47,6 +49,7 @@ for(int i=0; i< clist.size();i++)
 </tr>
 
 </table>
-
+</div>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

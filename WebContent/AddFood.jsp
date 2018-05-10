@@ -79,6 +79,9 @@ function validate()
 </script>
 </head>
 <body>
+<div id="templatemo_container">
+	<jsp:include page="Header.jsp"></jsp:include>
+
 <div align="center">
 <form onsubmit="return validate()" action="FoodServlet" method="post">
 <input type="hidden" name="action" value="addfood">
@@ -127,6 +130,7 @@ function validate()
 
 </table>
 </form>
+<jsp:include page="Footer.jsp"></jsp:include></div>
 </div>
 </body>
 </html>

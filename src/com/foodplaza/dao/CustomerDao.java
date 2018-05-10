@@ -13,5 +13,6 @@ public interface CustomerDao
 	List<Customer> getall();
 	Customer getById(int id);
 	boolean changePassword(String un,String oldpwd,String newpwd);
+	Customer getByEmail(String email);
 
 }

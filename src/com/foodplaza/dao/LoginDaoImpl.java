@@ -69,8 +69,19 @@ public class LoginDaoImpl implements LoginDao
 	{
 		con = DButility.getconnection();
 		try {
-			ps = con.prepareStatement("update customer_20479 set custpassword=? where custname=? and custpassword=?");
-			
+			ps = con.prepareStatement("update customer_20479 set custpassword=? where custemailid=? and custpassword=?");
+			ps.setString(1, newpwd);
+			ps.setString(2, un);
+			ps.setString(3, oldpwd);
+			int x = ps.executeUpdate();
+			if(x > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -80,6 +91,25 @@ public class LoginDaoImpl implements LoginDao
 	@Override
 	public boolean updatePwdAdmin(String un, String oldpwd, String newpwd) 
 	{		
+		con = DButility.getconnection();
+		try {
+			ps = con.prepareStatement("update admin_20479 set password=? where email=? and password=?");
+			ps.setString(1, newpwd);
+			ps.setString(2, un);
+			ps.setString(3, oldpwd);
+			int x = ps.executeUpdate();
+			if(x > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 

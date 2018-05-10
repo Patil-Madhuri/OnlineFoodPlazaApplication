@@ -8,8 +8,53 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Update Customer</title>
 </head>
+<script type="text/javascript">
+function validate()
+{
+	 var x = document.getElementsByClassName("valid");
+		var count=0;
+		for(var i=0;i<x.length;i++)
+			{
+				if(x[i].value == "")
+					{
+						x[i].nextElementSibling.style.color ="red";
+						x[i].nextElementSibling.innerHTML ="* Fields cannot be blank..!";
+						count++;
+					}
+				
+				else if(isNaN(x[2].value))
+					{
+						x[2].nextElementSibling.style.color ="red";
+						x[2].nextElementSibling.innerHTML = "* contact number cannot contain alphabets..!";
+						count++;
+					}
+				/* else if(isNaN(x[2].value) < 10)
+					{
+					x[2].nextElementSibling.style.color ="red";
+					x[2].nextElementSibling.innerHTML = "* contact number must contains 10 digit..!";
+					count++;
+					} */	  
+		 }
+	 if(count!=0)
+		{
+			return false;
+		}
+	return true;
+}
+	
+	function clearup(x)
+	{
+		if(x.value != "")
+			{
+				x.nextElementSibling.innerHTML = "";
+			}
+	}
+
+</script>
 <body>
-<% Customer c=(Customer)session.getAttribute("Customer"); %>
+<div id="templatemo_container">
+	<jsp:include page="Header.jsp"></jsp:include>
+<% Customer c=(Customer)session.getAttribute("Customer");%>
 <form action="CustomerServlet" method="post">
 <input type="hidden" name="action" value="updatecust">
 <table border="1" align="center" cellpadding="5x" cellspacing="5x">
@@ -25,13 +70,15 @@
 <td> Name </td>
 <td>
 <input type="text" name="cname" id="cname" value="<%=c.getCustname()%>">
+<span style="font-size: small;"></span>
 </td>
 </tr>
 
 <tr>
 <td> Email</td>
 <td>
-<input type="email" name="cemail" id= "cemail" value="<%=c.getCustemail()%>">
+<input type="text" name="cemail" id="cemail" value="<%=c.getCustemail()%>">
+<span style="font-size: small;"></span>
 </td>
 </tr>
 
@@ -46,27 +93,29 @@
 <td> Contact No </td>
 <td>
 <input type="text" name="cphone" id="cphone" value="<%=c.getCustphone()%>">
+<span style="font-size: small;"></span> 
 </td>
 </tr>
 
 <tr>
 <td> Address </td>
 <td>
-<textarea  type="text" rows="5" cols="20" name="cadd"><%=c.getAddress()%>
+<textarea rows="5" cols="20" name="cadd" id="cadd" ><%=c.getAddress()%>
 </textarea> 
+<span style="font-size: small;"></span> 
 </td>
 </tr>
 
 <tr>
 <td align="center" colspan="2">
 <input type="submit" name="submit" value="Update">
-
 </td>
-
-
-
+</tr>
 
 </table>
 </form>
+</div>
+<jsp:include page="Footer.jsp"></jsp:include>
+
 </body>
 </html>
